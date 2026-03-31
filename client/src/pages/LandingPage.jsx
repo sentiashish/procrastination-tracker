@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { BarChart3, BrainCircuit, Clock3, Sparkles } from "lucide-react";
 
 const features = [
   {
+    icon: BarChart3,
     title: "Plan vs Reality Tracking",
     description:
       "Measure the real gap between planned and actual execution time so your schedule becomes data-driven.",
   },
   {
+    icon: BrainCircuit,
     title: "Distraction Intelligence",
     description:
       "Log distractions and identify hidden time leaks across social, entertainment, and context switching.",
   },
   {
+    icon: Clock3,
     title: "Weekly Performance Score",
     description:
       "Get a weekly efficiency score with visual insights that help you improve consistency every day.",
@@ -26,14 +31,19 @@ const steps = [
 
 const LandingPage = () => {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-dashboardDarkAlt">
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="relative overflow-hidden rounded-3xl border border-slate-800 bg-dashboardDarkAlt"
+    >
       <div className="pointer-events-none absolute -left-24 top-16 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-secondary/20 blur-3xl" />
 
       <header className="relative z-10 flex flex-col gap-4 border-b border-slate-800 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.16em] text-secondary">Behavior Analytics Platform</p>
-          <h1 className="mt-1 font-heading text-2xl text-white sm:text-3xl">Procrastination Killer</h1>
+          <h1 className="heading-premium mt-1 font-heading text-2xl text-white sm:text-3xl">Procrastination Killer</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <Link
@@ -46,7 +56,7 @@ const LandingPage = () => {
             to="/login"
             className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/30 hover:brightness-110"
           >
-            Get started free
+            Join 1,000+ High-Performers
           </Link>
         </div>
       </header>
@@ -70,7 +80,10 @@ const LandingPage = () => {
                 to="/login"
                 className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/30 hover:brightness-110"
               >
+                <span className="inline-flex items-center gap-2">
+                  <Sparkles size={15} />
                 Start Your First Week
+                </span>
               </Link>
               <a
                 href="#how-it-works"
@@ -95,6 +108,31 @@ const LandingPage = () => {
                 "It changed how I plan my day. I now see exactly where my time actually goes."
               </p>
             </div>
+
+            <div className="mt-4 rounded-xl border border-primary/30 bg-dashboardActive/50 p-4">
+              <p className="text-xs uppercase tracking-[0.12em] text-slate-400">Live Comparison</p>
+              <p className="mt-1 text-sm font-semibold text-white">Planned vs Actual Time Leak</p>
+              <div className="mt-3 space-y-2">
+                <div className="rounded-lg bg-slate-900/80 p-3">
+                  <div className="flex items-center justify-between text-xs text-slate-400">
+                    <span>Planned 09:00-11:00</span>
+                    <span className="metric-mono text-secondary">2h</span>
+                  </div>
+                  <div className="mt-2 h-2 rounded-full bg-slate-700">
+                    <div className="h-2 w-full rounded-full bg-secondary" />
+                  </div>
+                </div>
+                <div className="rounded-lg bg-slate-900/80 p-3">
+                  <div className="flex items-center justify-between text-xs text-slate-400">
+                    <span>Actual 09:42-10:31</span>
+                    <span className="metric-mono text-amber-300">49m</span>
+                  </div>
+                  <div className="mt-2 h-2 rounded-full bg-slate-700">
+                    <div className="h-2 w-[41%] rounded-full bg-primary animate-pulse" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -113,16 +151,33 @@ const LandingPage = () => {
 
       <section className="relative z-10 border-t border-slate-800 px-6 py-10 sm:px-8">
         <h3 className="font-heading text-2xl text-white">Built like a modern SaaS product</h3>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        <motion.div
+          className="mt-6 grid gap-4 sm:grid-cols-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
           {features.map((feature) => (
-            <article key={feature.title} className="rounded-xl border border-slate-700 bg-slate-900/60 p-5">
+            <motion.article
+              key={feature.title}
+              className="rounded-xl border border-slate-700 bg-slate-900/60 p-5"
+              variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.28 }}
+            >
+              <div className="mb-3 inline-flex rounded-lg border border-primary/40 bg-primary/10 p-2 text-primary">
+                <feature.icon size={18} />
+              </div>
               <h4 className="font-semibold text-white">{feature.title}</h4>
               <p className="mt-2 text-sm text-slate-300">{feature.description}</p>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

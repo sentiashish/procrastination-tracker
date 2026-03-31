@@ -4,19 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#7C3AED",
+        primary: "#8B5CF6",
         secondary: "#14B8A6",
         landingLight: "#F8FAFC",
         cardLight: "#FFFFFF",
-        dashboardDark: "#0B1220",
-        dashboardDarkAlt: "#111827",
+        dashboardDark: "#020617",
+        dashboardDarkAlt: "#0F172A",
+        dashboardActive: "#1E293B",
       },
       fontFamily: {
-        heading: ["Poppins", "sans-serif"],
-        body: ["Space Grotesk", "sans-serif"],
+        heading: ["Sora", "sans-serif"],
+        body: ["Sora", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       boxShadow: {
-        glass: "0 10px 30px rgba(2, 6, 23, 0.08)",
+        glass: "0 12px 30px rgba(2, 6, 23, 0.18)",
       },
     },
   },
