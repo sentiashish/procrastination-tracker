@@ -1,530 +1,188 @@
-# 🎯 Procrastination Killer - Behavior Analytics System
+# Procrastination Killer - Behavior Analytics System
 
-> A full-stack MERN application that tracks the gap between planned tasks and actual execution, analyzes procrastination patterns, and generates behavioral insights to improve productivity.
+A behavior-first productivity platform built with MERN that measures the gap between what you planned and what you actually executed.
 
-## 📌 About the Project
+## 🔥 Why This Project Exists
+Most productivity tools stop at task lists. They help you plan, but they do not explain execution failure.
 
-### Why I Built This
-Productivity isn't about working harder—it's about understanding **why** we procrastinate. Most task managers only track *what* we do, but don't analyze the behavioral patterns behind delays. This app bridges that gap by:
+As a BTech student, I wanted to build something closer to real life:
+- We plan deep work blocks.
+- We start late.
+- We get distracted.
+- We overestimate productivity.
 
-- **Tracking Execution Gaps**: Recording planned vs. actual task execution times
-- **Monitoring Distractions**: Logging distraction activities to identify patterns
-- **Generating Insights**: Calculating efficiency scores and distraction breakdowns
-- **Behavioral Analytics**: Helping users understand their procrastination triggers
+Procrastination Killer was built to track these behavior gaps with data, not assumptions.
 
-### Problem It Solves
-1. **The Productivity Illusion**: You plan 8 hours of work but only complete 3
-2. **Missing Context**: Standard todo apps don't explain *why* tasks are delayed
-3. **Distraction Blindness**: You're unaware of time spent on non-productive activities
-4. **No Actionable Insights**: No data-driven understanding of personal behavior
+## 🚀 Product Features
+- **Execution Gap Tracking**: Create planned time blocks and compare them against actual start/end times.
+- **Delay Detection**: Automatically marks delayed starts when actual execution misses planned schedule.
+- **Distraction Logging**: Manually log distractions like YouTube, Instagram, gaming, and other non-work activities.
+- **Weekly Intelligence Dashboard**: View planned vs actual hours, distraction breakdown, and behavior trends.
+- **Efficiency Scoring**: Computes a clear execution score from planned and actual work time.
+- **Secure Auth + Protected Workflows**: JWT-based authentication for all user-specific actions and analytics.
+- **Actionable UI**: Dedicated Dashboard, Task Manager, and Insights pages with chart-based visualization.
 
-This app provides **concrete data** to help you make informed decisions about productivity improvements.
+## 🧠 Unique Value
+This is not a todo app clone.
 
----
+What makes it different:
+- It measures **behavior quality**, not just completion count.
+- It captures **why productivity drops** (late starts + distraction load).
+- It gives **weekly feedback loops** so users can improve execution patterns over time.
 
-## ✨ Features
+## 🛠 Tech Stack
+| Layer | Technologies |
+|---|---|
+| Frontend | React, Vite, Tailwind CSS, Recharts, Axios, Framer Motion |
+| Backend | Node.js, Express.js, MongoDB, Mongoose |
+| Auth | JWT, bcryptjs |
+| Tooling | Postman, Git, npm |
+| Deployment | Vercel (frontend), Render/Railway (backend), MongoDB Atlas |
 
-### Core Features
-- ✅ **User Authentication**: Secure JWT-based login/register system
-- ✅ **Task Management**: Create, edit, delete tasks with planned time windows
-- ✅ **Real-time Tracking**: Start/end tasks to capture actual execution times
-- ✅ **Distraction Logging**: Manually log distraction activities (YouTube, Instagram, Gaming, etc.)
-- ✅ **Weekly Analytics Dashboard**: 
-  - Bar chart comparing planned vs. actual hours
-  - Pie chart showing distraction breakdown
-  - Efficiency score calculations
-- ✅ **Behavioral Insights**: 
-  - Efficiency Score = (Actual Hours / Planned Hours) × 100
-  - Distraction Hours = Total non-study activity time
-  - Delay Detection: Tasks that start after planned time
+## 📸 Screenshots
+Add screenshots in a folder like `docs/screenshots/` and update the links below.
 
-### Premium Features (Coming Soon)
-- 📊 Monthly/Yearly reports with trend analysis
-- 🤖 AI-powered procrastination predictions
-- 📱 Mobile app for on-the-go tracking
-- 🔔 Smart reminders based on distraction patterns
-- 👥 Team analytics and collaboration
+- Dashboard: `docs/screenshots/dashboard.png`
+- Task Manager: `docs/screenshots/task-manager.png`
+- Analytics: `docs/screenshots/analytics.png`
+- Mobile View: `docs/screenshots/mobile.png`
 
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **React 18** - UI framework
-- **React Router** - Navigation
-- **Tailwind CSS** - Styling with custom design system
-- **Recharts** - Data visualization (bar & pie charts)
-- **Axios** - HTTP client with JWT interceptors
-- **Vite** - Build tool
-
-### Backend
-- **Node.js** - Runtime
-- **Express.js** - Web framework
-- **MongoDB** - NoSQL database
-- **Mongoose** - ODM for data modeling
-- **JWT** - Authentication token management
-- **bcryptjs** - Password hashing
-
-### Deployment
-- **Frontend**: Vercel (auto-deploy from git)
-- **Backend**: Render or Railway (Node.js hosting)
-- **Database**: MongoDB Atlas (cloud database)
-
----
-
-## 📦 Installation & Setup
-
-### Prerequisites
-- Node.js (v14+)
-- npm or yarn
-- MongoDB Atlas account (free tier available)
-
-### Step 1: Clone the Repository
+## ⚙️ Installation & Setup
+### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/procrastination-killer.git
-cd procrastination-killer
+git clone https://github.com/<your-username>/procrastination-killer.git
+cd procrastination-tracker
 ```
 
-### Step 2: Setup Backend
-
-1. Navigate to server directory:
+### 2. Backend Setup
 ```bash
 cd server
-```
-
-2. Install dependencies:
-```bash
 npm install
 ```
 
-3. Create `.env` file from `.env.example`:
+Create `.env` from `server/.env.example` and fill values.
+
+Run backend:
 ```bash
-cp .env.example .env
+npm run dev
 ```
 
-4. Configure `.env` with your MongoDB Atlas connection:
+### 3. Frontend Setup
+Open a second terminal:
+```bash
+cd client
+npm install
+```
+
+Create `.env` from `client/.env.example`.
+
+Run frontend:
+```bash
+npm run dev
+```
+
+### 4. Open App
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:5000`
+
+## 🔐 Environment Variables
+### Backend (`server/.env`)
 ```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/procrastination-killer
-JWT_SECRET=your-secret-key-here
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/procrastination-killer
+JWT_SECRET=<strong-random-secret>
 JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:5173
 PORT=5000
 NODE_ENV=development
+CLIENT_URL=http://localhost:5173
 ```
 
-5. Get `MONGO_URI` from MongoDB Atlas:
-   - Visit [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-   - Create a free account
-   - Create a new cluster
-   - Click "Connect" → "Connect your application"
-   - Copy the connection string and replace `<username>:<password>` with your credentials
-
-### Step 3: Setup Frontend
-
-1. Navigate to client directory:
-```bash
-cd ../client
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create `.env` file:
-```bash
-cp .env.example .env
-```
-
-4. Verify `.env` configuration:
+### Frontend (`client/.env`)
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
----
-
-## 🚀 Running the Application
-
-### Development Mode
-
-**Terminal 1 - Backend (runs on port 5000)**
-```bash
-cd server
-npm run dev
-```
-
-**Terminal 2 - Frontend (runs on port 5173)**
-```bash
-cd client
-npm run dev
-```
-
-Visit **http://localhost:5173** in your browser
-
-### Production Build
-
-**Backend:**
-```bash
-cd server
-npm start  # Runs compiled JavaScript
-```
-
-**Frontend:**
-```bash
-cd client
-npm run build  # Creates optimized dist/ folder
-npm run preview  # Preview production build locally
-```
-
----
-
-## 📡 API Documentation
-
-### Authentication Endpoints
-
-#### Register New User
-```http
-POST /api/auth/register
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "secure-password"
-}
-
-Response: { token, user }
-```
-
-#### Login
-```http
-POST /api/auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "secure-password"
-}
-
-Response: { token, user }
-```
-
-#### Get Current User (Protected)
-```http
-GET /api/auth/me
-Authorization: Bearer {token}
-
-Response: { user }
-```
-
-### Task Endpoints (All Protected)
-
-#### Create Task
-```http
-POST /api/tasks/create
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "title": "Complete project report",
-  "plannedStartTime": "2026-03-31T09:00:00Z",
-  "plannedEndTime": "2026-03-31T11:00:00Z"
-}
-
-Response: { _id, title, status: "pending", ... }
-```
-
-#### Get All Tasks
-```http
-GET /api/tasks
-Authorization: Bearer {token}
-
-Response: [ { task objects } ]
-```
-
-#### Start Task
-```http
-PUT /api/tasks/start/{taskId}
-Authorization: Bearer {token}
-
-Response: { task with actualStartTime, status updated }
-```
-
-#### End Task
-```http
-PUT /api/tasks/end/{taskId}
-Authorization: Bearer {token}
-
-Response: { task with actualEndTime, status: "completed" }
-```
-
-### Activity Endpoints (All Protected)
-
-#### Log Activity (Distraction)
-```http
-POST /api/activity/add
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "activityType": "youtube",
-  "startTime": "2026-03-31T12:00:00Z",
-  "endTime": "2026-03-31T12:30:00Z"
-}
-
-Response: { _id, userId, activityType, ... }
-```
-
-#### Get Activity Logs
-```http
-GET /api/activity
-Authorization: Bearer {token}
-
-Response: [ { activity objects } ]
-```
-
-### Report Endpoints (All Protected)
-
-#### Get Weekly Report
-```http
-GET /api/reports/weekly
-Authorization: Bearer {token}
-
-Response: {
-  report: {
-    userId,
-    weekStart,
-    totalPlannedHours,
-    totalActualHours,
-    distractionHours,
-    efficiencyScore
-  },
-  taskCount,
-  activityCount
-}
-```
-
----
-
-## 🌐 Deployment Guide
-
-### Frontend Deployment (Vercel)
-
-1. **Push code to GitHub**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/yourusername/procrastination-killer.git
-   git push -u origin main
-   ```
-
-2. **Deploy to Vercel**:
-   - Visit [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your GitHub repository
-   - Select the `client` directory as root
-   - Add Env Variable: `VITE_API_URL=https://your-backend-url.com/api`
-   - Click "Deploy"
-
-3. **Auto-Deploy**: Every git push to main branch automatically deploys
-
-### Backend Deployment (Render)
-
-1. **Create account** on [render.com](https://render.com)
-
-2. **Create new Web Service**:
-   - Connect GitHub repo
-   - Set **Root Directory**: `server`
-   - Set **Build Command**: `npm install`
-   - Set **Start Command**: `npm start`
-
-3. **Add Environment Variables** in Render dashboard:
-   - `MONGO_URI`: Your MongoDB Atlas connection string
-   - `JWT_SECRET`: Secure secret key
-   - `CLIENT_URL`: Your Vercel frontend URL
-   - `NODE_ENV`: `production`
-
-4. **Deploy**: Render auto-deploys on git push
-
-### Backend Deployment (Railway Alternative)
-
-1. Visit [railway.app](https://railway.app)
-2. Create new Project
-3. Connect GitHub repository
-4. Railway auto-detects Node.js
-5. Set Environment Variables:
-   - `MONGO_URI`
-   - `JWT_SECRET`
-   - `CLIENT_URL`
-6. Deploy!
-
-### Database Setup (MongoDB Atlas)
-
-1. **Create Account**: [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
-2. **Create Cluster**: Choose "Free Tier"
-3. **Create Database User**:
-   - Security → Database Access
-   - Username: `procrastination-app`
-   - Generate Secure Password
-4. **Get Connection String**:
-   - Deployment → Databases → Connect
-   - Choose "Connect your application"
-   - Copy connection string
-5. **Configure in `.env`**:
-   ```
-   MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/procrastination-killer?retryWrites=true&w=majority
-   ```
-
----
-
-## 📊 Screenshots
-
-### Dashboard
-![Dashboard - Coming Soon]
-
-### Task Manager
-![Task Manager - Coming Soon]
-
-### Analytics Page
-![Analytics - Coming Soon]
-
-### Mobile Responsive
-![Mobile - Coming Soon]
-
----
-
-## 🔐 Security Features
-
-- ✅ JWT token-based authentication
-- ✅ Password hashing with bcryptjs
-- ✅ Protected routes (AuthContext, ProtectedRoute)
-- ✅ HTTP-only cookie storage (future enhancement)
-- ✅ CORS configured for frontend domain
-- ✅ Input validation on backend and frontend
-
----
-
-## 🧪 Project Structure
-
-```
+## 📡 API Endpoints
+Base URL: `/api`
+
+### Auth
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /auth/me` (protected)
+
+### Tasks
+- `POST /tasks/create`
+- `GET /tasks`
+- `PUT /tasks/start/:id`
+- `PUT /tasks/end/:id`
+- `PUT /tasks/:id`
+- `DELETE /tasks/:id`
+
+### Activity
+- `POST /activity/add`
+- `GET /activity`
+
+### Reports
+- `GET /reports/weekly`
+
+## 🧱 Project Structure
+```text
 procrastination-tracker/
-│
-├── client/                    # React Frontend
-│   ├── src/
-│   │   ├── components/       # Reusable UI components
-│   │   ├── pages/            # Page components (Dashboard, Tasks, Analytics)
-│   │   ├── context/          # AuthContext for state management
-│   │   ├── services/         # API client (api.js with axios)
-│   │   ├── App.jsx           # Main app with routes
-│   │   └── main.jsx          # React DOM entry point
-│   ├── index.css             # Tailwind directives
-│   ├── tailwind.config.js    # Tailwind design tokens
-│   └── package.json
-│
-├── server/                    # Express Backend
-│   ├── controllers/          # Business logic for each resource
-│   ├── models/               # Mongoose schemas (User, Task, Activity, Report)
-│   ├── routes/               # API routes
-│   ├── middleware/           # JWT auth, error handling
-│   ├── utils/                # Helper functions (JWT, time calculations)
-│   ├── config/               # Database connection
-│   ├── server.js             # Express app setup
-│   └── package.json
-│
-└── README.md                 # This file!
+├─ client/
+│  ├─ src/
+│  │  ├─ components/      # shared UI components (shell, routes, nav)
+│  │  ├─ context/         # auth/theme/toast state
+│  │  ├─ pages/           # Dashboard, Task Manager, Analytics, Auth, Settings
+│  │  └─ services/        # axios API layer
+│  └─ ...
+├─ server/
+│  ├─ config/             # db connection
+│  ├─ controllers/        # auth/task/activity/report handlers
+│  ├─ middleware/         # auth/error handlers
+│  ├─ models/             # User, Task, ActivityLog, Report
+│  ├─ routes/             # API route definitions
+│  └─ utils/              # jwt/time helpers
+└─ README.md
 ```
 
----
+## 📊 How Analytics Works
+Weekly analytics is generated from task execution and distraction logs:
 
-## 🔄 Workflow Example
+- **Delay in start**: when `actualStartTime > plannedStartTime`.
+- **Total planned work**: sum of `(plannedEndTime - plannedStartTime)` for tasks.
+- **Total actual work**: sum of `(actualEndTime - actualStartTime)` for completed/in-progress execution windows.
+- **Distraction time**: sum of distraction activity durations.
+- **Efficiency score**:
 
-### Step-by-Step User Flow
+$$
+\text{Efficiency Score} = \frac{\text{Total Actual Work Hours}}{\text{Total Planned Work Hours}} \times 100
+$$
 
-1. **Register/Login**
-   - User signs up with email & password
-   - Backend creates user in MongoDB
-   - JWT token returned and stored in localStorage
+## 🚀 Deployment
+### Backend (Render or Railway)
+1. Connect GitHub repo.
+2. Set root directory to `server`.
+3. Build command: `npm install`
+4. Start command: `npm start`
+5. Add env vars from `server/.env`.
 
-2. **Create Task**
-   - Go to "Task Manager"
-   - Click "+ New Task"
-   - Enter title and planned time window
-   - Task created with `status: "pending"`
+### Frontend (Vercel)
+1. Import repo.
+2. Set root directory to `client`.
+3. Add `VITE_API_URL=https://<your-backend-domain>/api`
+4. Deploy.
 
-3. **Track Task Execution**
-   - Go to "Dashboard"
-   - Click "Start" on task
-   - `actualStartTime` recorded; status updated if delayed
-   - Click "End" when done
-   - `actualEndTime` recorded; status changed to `"completed"`
+### Final Step
+Update backend `CLIENT_URL` to deployed frontend URL for CORS.
 
-4. **Log Distractions**
-   - Go to "Analytics"
-   - Click "+ Log Distraction"
-   - Select activity type (YouTube, Instagram, etc.)
-   - Enter duration
-   - Activity saved to database
+## 🎯 Future Improvements
+- AI-based procrastination pattern detection and suggestion engine
+- Passive distraction tracking integrations (browser/app usage)
+- Focus mode timers with adaptive break recommendations
+- Monthly behavior trend reports
+- Smart nudges based on historical delay windows
+- Team and mentor dashboards
 
-5. **View Analytics**
-   - Go to "Analytics"
-   - Weekly report auto-loads with:
-     - Bar chart: Planned vs. Actual hours
-     - Pie chart: Distraction breakdown
-     - Efficiency score calculation
-   - Manual "Regenerate" button available
+## 👨‍💻 Author
+**Ashish Kumar**
 
----
-
-## 🤝 Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m "Add amazing feature"`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open Pull Request
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-## 📧 Support
-
-For questions, issues, or suggestions:
-- Open an issue on GitHub
-- Email: your-email@example.com
-- Twitter: [@yourhandle](https://twitter.com/yourhandle)
-
----
-
-## 🎯 Roadmap
-
-- [x] MVP: Task tracking + weekly analytics
-- [ ] Advanced charts (monthly/yearly trends)
-- [ ] AI-powered procrastination predictions
-- [ ] Mobile app (React Native)
-- [ ] Smart reminders based on patterns
-- [ ] Export reports as PDF
-- [ ] Team collaboration features
-- [ ] Browser extension for auto-tracking
-
----
-
-## ⭐ Show Your Support
-
-If you found this project helpful, please give it a ⭐ on GitHub!
-
----
-
-**Built with ❤️ by [Your Name](https://github.com/yourusername)**
-
-Last updated: March 31, 2026
-
----
+If this project resonates with you, feel free to connect and share feedback.
