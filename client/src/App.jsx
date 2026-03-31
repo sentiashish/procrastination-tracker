@@ -1,49 +1,35 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AppShell from "./components/AppShell";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import TaskManagerPage from "./pages/TaskManagerPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import LandingPage from "./pages/LandingPage";
 import { useAuth } from "./context/AuthContext";
 
 const App = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="min-h-screen bg-dashboardDark text-slate-100">
-      {isAuthenticated && <Navbar />}
-      <main className="mx-auto max-w-6xl px-4 py-6">
-        <Routes>
-          <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/tasks"
-            element={
-              <ProtectedRoute>
-                <TaskManagerPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/analytics"
-            element={
-              <ProtectedRoute>
-                <AnalyticsPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />} />
-        </Routes>
-      </main>
-    </div>
+    <Routes>
+      <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LandingPage />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
+
+      <Route
+        element={
+          <ProtectedRoute>
+            <AppShell />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/tasks" element={<TaskManagerPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/"} replace />} />
+    </Routes>
   );
 };
 

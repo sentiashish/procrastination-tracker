@@ -25,6 +25,8 @@ export const taskApi = {
   getTasks: () => api.get("/tasks"),
   startTask: (id) => api.put(`/tasks/start/${id}`),
   endTask: (id) => api.put(`/tasks/end/${id}`),
+  updateTask: (id, payload) => api.put(`/tasks/${id}`, payload),
+  deleteTask: (id) => api.delete(`/tasks/${id}`),
 };
 
 export const activityApi = {
