@@ -1,17 +1,34 @@
 # Procrastination Killer - Behavior Analytics System
 
+[![Frontend - Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)](https://procrastination-tracker.vercel.app)
+![Stack - MERN](https://img.shields.io/badge/Stack-MERN-10B981)
+![Auth - JWT](https://img.shields.io/badge/Auth-JWT-2563EB)
+![Database - MongoDB Atlas](https://img.shields.io/badge/Database-MongoDB%20Atlas-16A34A?logo=mongodb)
+![Status - Active](https://img.shields.io/badge/Status-Active%20Development-F59E0B)
+
 A behavior-first productivity platform built with MERN that measures the gap between what you planned and what you actually executed.
+
+## Live Demo
+- Frontend: https://procrastination-tracker.vercel.app
+- Dashboard: https://procrastination-tracker.vercel.app/dashboard
+
+## 🔗 Backend API
+
+The backend is deployed on Render:
+
+👉 https://procrastination-tracker-kjgy.onrender.com/api
 
 ## 🔥 Why This Project Exists
 Most productivity tools stop at task lists. They help you plan, but they do not explain execution failure.
 
-As a BTech student, I wanted to build something closer to real life:
+As a BTech student, I wanted to build something closer to real-life behavior:
 - We plan deep work blocks.
 - We start late.
 - We get distracted.
 - We overestimate productivity.
 
 Procrastination Killer was built to track these behavior gaps with data, not assumptions.
+It focuses on measurable execution patterns so users can improve consistency over time.
 
 ## 🚀 Product Features
 - **Execution Gap Tracking**: Create planned time blocks and compare them against actual start/end times.
@@ -22,6 +39,11 @@ Procrastination Killer was built to track these behavior gaps with data, not ass
 - **Secure Auth + Protected Workflows**: JWT-based authentication for all user-specific actions and analytics.
 - **Actionable UI**: Dedicated Dashboard, Task Manager, and Insights pages with chart-based visualization.
 
+## 💡 Standout Highlights
+- Built around a real student pain point: execution inconsistency, not just task completion.
+- Converts daily planning behavior into measurable weekly intelligence.
+- Uses simple product design to make analytics actionable for non-technical users.
+
 ## 🧠 Unique Value
 This is not a todo app clone.
 
@@ -29,6 +51,12 @@ What makes it different:
 - It measures **behavior quality**, not just completion count.
 - It captures **why productivity drops** (late starts + distraction load).
 - It gives **weekly feedback loops** so users can improve execution patterns over time.
+
+## ✅ Production Status
+- Frontend is deployed on Vercel.
+- Backend is intended for Render or Railway deployment.
+- CORS is controlled via `CLIENT_URL`.
+- Frontend API base URL is controlled via `VITE_API_URL`.
 
 ## 🛠 Tech Stack
 | Layer | Technologies |
@@ -50,7 +78,7 @@ Add screenshots in a folder like `docs/screenshots/` and update the links below.
 ## ⚙️ Installation & Setup
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/<your-username>/procrastination-killer.git
+git clone https://github.com/<your-username>/procrastination-tracker.git
 cd procrastination-tracker
 ```
 
@@ -163,7 +191,7 @@ $$
 2. Set root directory to `server`.
 3. Build command: `npm install`
 4. Start command: `npm start`
-5. Add env vars from `server/.env`.
+5. Add production env vars matching your backend deployment setup.
 
 ### Frontend (Vercel)
 1. Import repo.
@@ -173,6 +201,11 @@ $$
 
 ### Final Step
 Update backend `CLIENT_URL` to deployed frontend URL for CORS.
+
+### Deployed Configuration Checklist
+- Backend env should include: `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `NODE_ENV=production`, `CLIENT_URL=https://procrastination-tracker.vercel.app`.
+- Frontend env should include: `VITE_API_URL=https://<your-backend-domain>/api`.
+- After changing env values, redeploy both services.
 
 ## 🎯 Future Improvements
 - AI-based procrastination pattern detection and suggestion engine
@@ -184,5 +217,7 @@ Update backend `CLIENT_URL` to deployed frontend URL for CORS.
 
 ## 👨‍💻 Author
 **Ashish Kumar**
+
+BTech student focused on building practical, behavior-driven products using full-stack engineering.
 
 If this project resonates with you, feel free to connect and share feedback.
